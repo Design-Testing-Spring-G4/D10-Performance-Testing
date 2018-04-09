@@ -29,4 +29,4 @@
 <a class="fNiv" href="welcome/terms.do"><jstl:out value="${lopd}"/></a><br />
 <a class="fNiv" href="welcome/contact.do"><jstl:out value="${lssi}"/></a><br />
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Sample Co., Inc.</b>
+<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Acme, Inc.</b>

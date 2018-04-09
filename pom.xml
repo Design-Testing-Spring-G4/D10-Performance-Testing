@@ -20,8 +20,8 @@
 	<!-- Artifact identification and properties -->
 
 	<groupId>Design-and-Testing</groupId>
-	<artifactId>Sample-Project</artifactId>
-	<version>1.13</version>
+	<artifactId>Acme-Newspaper</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	
 	<properties>
@@ -30,9 +30,9 @@
 
 	<!-- Indexing information -->
 
-	<name>Sample Project</name>
-	<url>http://www.sample-project.com</url>
-	<description>This is D&amp;T's sample project.</description>
+	<name>Acme-Newspaper</name>
+	<url>http://www.acme.com</url>
+	<description>This is the project for D&amp;T's 10th deliverable.</description>
 	
 	<!-- Build commands -->
 
