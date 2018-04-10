@@ -46,6 +46,7 @@ public class Newspaper extends DomainEntity {
 		return this.title;
 	}
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getPublicationDate() {
@@ -58,6 +59,7 @@ public class Newspaper extends DomainEntity {
 	}
 
 	@URL
+	@NotNull
 	public String getPicture() {
 		return this.picture;
 	}

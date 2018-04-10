@@ -74,4 +74,8 @@ public class LoginService implements UserDetailsService {
 		return result;
 	}
 
+	public UserAccount findOne(final Integer id) {
+		return this.userRepository.findOne(id);
+	}
+
 }

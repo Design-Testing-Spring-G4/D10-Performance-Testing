@@ -17,6 +17,7 @@ public class User extends Actor {
 	private Collection<User>		followers;
 	private Collection<Chirp>		chirps;
 	private Collection<Newspaper>	newspapers;
+	private Collection<Article>		articles;
 
 
 	//Getters
@@ -42,6 +43,13 @@ public class User extends Actor {
 		return this.newspapers;
 	}
 
+	@NotNull
+	@Valid
+	@OneToMany(mappedBy = "writer")
+	public Collection<Article> getArticles() {
+		return this.articles;
+	}
+
 	//Setters
 
 	public void setFollowers(final Collection<User> followers) {
@@ -54,5 +62,9 @@ public class User extends Actor {
 
 	public void setNewspapers(final Collection<Newspaper> newspapers) {
 		this.newspapers = newspapers;
+	}
+
+	public void setArticles(final Collection<Article> articles) {
+		this.articles = articles;
 	}
 }

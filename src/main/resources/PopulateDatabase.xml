@@ -146,6 +146,10 @@
 				<ref bean="newspaper1"/>
 			</list>
 		</property>
+		<property name="articles">
+			<list>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="user2" class="domain.User">
@@ -168,6 +172,12 @@
 			<list>
 				<ref bean="newspaper2"/>
 				<ref bean="newspaper3"/>
+			</list>
+		</property>
+		<property name="articles">
+			<list>
+				<ref bean="article1"/>
+				<ref bean="article2"/>
 			</list>
 		</property>
 	</bean>
@@ -254,7 +264,7 @@
 	
 	<bean id="newspaper3" class="domain.Newspaper">
 		<property name="title" value="Experiment dot com"/>
-		<property name="publicationDate"><null/></property>
+		<property name="publicationDate" value="24/10/2020"/>
 		<property name="description" value="An experimental newspaper."/>
 		<property name="picture" value=""/>
 		<property name="isPrivate" value="true"/>
@@ -281,6 +291,7 @@
 			</list>
 		</property>
 		<property name="finalMode" value="true"/>
+		<property name="writer" ref="user2"/>
 		<property name="followups">
 			<list>
 				<ref bean="followup1"/>
@@ -298,6 +309,7 @@
 			</list>
 		</property>
 		<property name="finalMode" value="true"/>
+		<property name="writer" ref="user2"/>
 		<property name="followups">
 			<list>
 			</list>
@@ -324,7 +336,7 @@
 	</bean>
 	
 	<bean id="tabooWord2" class="domain.TabooWord">
-		<property name="word" value="love"/>
+		<property name="word" value="sexo"/>
 	</bean>
 	
 	<bean id="tabooWord3" class="domain.TabooWord">

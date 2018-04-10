@@ -8,6 +8,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,6 +33,7 @@ public class Article extends DomainEntity {
 
 	//Relationships
 
+	private User					writer;
 	private Collection<Followup>	followups;
 
 
@@ -42,6 +44,7 @@ public class Article extends DomainEntity {
 		return this.title;
 	}
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getMoment() {
@@ -66,6 +69,13 @@ public class Article extends DomainEntity {
 
 	public boolean isFinalMode() {
 		return this.finalMode;
+	}
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	public User getWriter() {
+		return this.writer;
 	}
 
 	@NotNull
@@ -99,6 +109,10 @@ public class Article extends DomainEntity {
 
 	public void setFinalMode(final boolean finalMode) {
 		this.finalMode = finalMode;
+	}
+
+	public void setWriter(final User writer) {
+		this.writer = writer;
 	}
 
 	public void setFollowups(final Collection<Followup> followups) {
