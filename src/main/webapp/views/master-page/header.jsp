@@ -48,7 +48,8 @@
 					</security:authorize>
 					
 					<security:authorize access="hasRole('USER')">
-					
+						<li><a href="newspaper/user/create.do"><spring:message
+									code="master.page.user.edit.newspaper" /></a></li>
 					</security:authorize>
 					
 					<security:authorize access="hasRole('CUSTOMER')">
