@@ -26,6 +26,10 @@
 		<value>/views/administrator/messages</value>
 		<value>/views/customer/messages</value>
 		<value>/views/legislation/messages</value>
+		
+		<value>/views/newspaper/messages</value>
+		
+		
 	</util:list>
 
 </beans>
