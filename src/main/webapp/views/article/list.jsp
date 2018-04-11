@@ -24,12 +24,14 @@
 
 <%-- Stored message variables --%>
 
-<spring:message code="newspaper.title" var="title" />
-<spring:message code="newspaper.publisher" var="publisher" />
-<spring:message code="newspaper.publicationDate" var="publicationDate" />
-<spring:message code="newspaper.description" var="description" />
-<spring:message code="newspaper.isPrivate" var="isPrivate" />
-<spring:message code="newspaper.display" var="display" />
+<spring:message code="article.title" var="title" />
+<spring:message code="article.writer" var="writer" />
+<spring:message code="article.moment" var="moment" />
+<spring:message code="article.summary" var="summary" />
+<spring:message code="article.body" var="body" />
+<spring:message code="article.finalMode" var="finalMode" />
+<spring:message code="article.display" var="display" />
+<spring:message code="article.create" var="msgCreate" />
 
 <security:authorize access="permitAll()">
 
@@ -42,15 +44,17 @@
 
 	<display:column property="title" title="${title}" sortable="true" />
 	
-	<display:column property="publisher.userAccount.username" title="${publisher}" sortable="true" />
+	<display:column property="writer.userAccount.username" title="${writer}" sortable="true" />
 
-	<display:column title="${publicationDate}" sortable="true">
-		<fmt:formatDate value="${row.publicationDate}" pattern="${formatDate}" />
+	<display:column title="${moment}" sortable="true">
+		<fmt:formatDate value="${row.moment}" pattern="${moment}" />
 	</display:column>
 	
-	<display:column property="description" title="${description}" sortable="true" />
+	<display:column property="summary" title="${summary}" sortable="true" />
 
-	<display:column property="isPrivate" title="${isPrivate}" sortable="true" />
+	<display:column property="body" title="${body}" sortable="true" />
+	
+	<display:column property="finalMode" title="${finalMode}" sortable="true" />
 	
 	<%-- Links towards edition, display and others --%>
 
@@ -64,4 +68,7 @@
 	
 </display:table>
 
+<spring:url var="createUrl" value="article/user/create.do"/>
+	<a href="${createUrl}"><jstl:out value="${msgCreate}"/></a>
+	
 </security:authorize>

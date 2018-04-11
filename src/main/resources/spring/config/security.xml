@@ -32,14 +32,20 @@
 		<security:intercept-url pattern="/images/**" access="permitAll" /> 
 		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
 		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+		
 		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+		
 		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
 
 		<security:intercept-url pattern="/welcome/*" access="permitAll" /> 
 		
+		<security:intercept-url pattern="/newspaper/**" access="permitAll" />
+		<security:intercept-url pattern="/article/**" access="permitAll"/>
+		
 		<security:intercept-url pattern="/newspaper/user/**" access="hasRole('USER')" />		
-
+		<security:intercept-url pattern="/article/user/**" access="hasRole('USER')" />		
+		
 
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
