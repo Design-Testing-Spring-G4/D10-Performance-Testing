@@ -31,6 +31,9 @@
 		<bean class="converters.ArticleToStringConverter"/>
 		<bean class="converters.StringToArticleConverter"/>
 		
+		<bean class="converters.AuthorityToStringConverter"/>
+		<bean class="converters.StringToAuthorityConverter"/>
+		
 		<bean class="converters.ChirpToStringConverter"/>
 		<bean class="converters.StringToChirpConverter"/>
 		

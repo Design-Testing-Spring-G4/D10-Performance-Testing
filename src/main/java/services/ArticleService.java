@@ -60,4 +60,14 @@ public class ArticleService {
 
 		this.articleRepository.delete(article);
 	}
+
+	//Ancillary methods
+
+	public Double avgFollowupsPerArticle() {
+		return this.articleRepository.avgFollowupsPerArticle();
+	}
+
+	public Double avgFollowupsPerArticleWeeks() {
+		return this.articleRepository.avgFollowupsPerArticleWeeks();
+	}
 }

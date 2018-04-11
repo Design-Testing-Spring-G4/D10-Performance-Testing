@@ -73,4 +73,30 @@ public class NewspaperService {
 
 		this.newspaperRepository.delete(newspaper);
 	}
+
+	//Ancillary methods
+
+	public Double[] avgstdArticlesPerNewspaper() {
+		return this.newspaperRepository.avgstdArticlesPerNewspaper();
+	}
+
+	public Collection<Newspaper> newspapersAboveAvg() {
+		return this.newspaperRepository.newspapersAboveAvg();
+	}
+
+	public Collection<Newspaper> newspapersUnderAvg() {
+		return this.newspaperRepository.newspapersUnderAvg();
+	}
+
+	public Double ratioPublicNewspapers() {
+		return this.newspaperRepository.ratioPublicNewspapers();
+	}
+
+	public Double avgArticlesPerPrivateNewspaper() {
+		return this.newspaperRepository.avgArticlesPerPrivateNewspaper();
+	}
+
+	public Double avgArticlesPerPublicNewspaper() {
+		return this.newspaperRepository.avgArticlesPerPublicNewspaper();
+	}
 }

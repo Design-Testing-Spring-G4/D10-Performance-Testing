@@ -14,7 +14,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<img src="images/logo.png" alt="Acme, Inc." />
+	<img src="images/logo.png" height="200" width="650" alt="Acme, Inc." />
 </div>
 
 <div>
@@ -28,7 +28,8 @@
 						code="master.page.register" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li>
+					<li><a href="user/create.do"><spring:message
+								code="master.page.register.user" /></a></li>
 			</ul></li>
 		
 		</security:authorize>
@@ -42,9 +43,9 @@
 				<ul>
 					<li class="arrow"></li>
 					
-					
 					<security:authorize access="hasRole('ADMIN')">
-					
+						<li><a href="administrator/dashboard.do"><spring:message
+									code="master.page.dashboard" /></a></li>
 					</security:authorize>
 					
 					<security:authorize access="hasRole('USER')">

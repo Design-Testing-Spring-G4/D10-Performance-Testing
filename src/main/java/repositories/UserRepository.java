@@ -28,10 +28,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	//The average and the standard deviation of the number of chirps per user.
 	@Query("select avg(u.chirps.size), stddev(u.chirps.size) from User u")
-	Double[] avgstdChiirpsPerUser();
+	Double[] avgstdChirpsPerUser();
 
 	//The ratio of users who have posted above 75% the average number of chirps	per user.
-	@Query("select u from User u where u.chirps.size > (select avg(u.chirps.size)*1.75 from User u)")
+	@Query("select (select count(u) from User u where u.chirps.size *1.0 > (select avg(u.chirps.size)*1.75 from User u))*1.0/count(u) from User u")
 	Double usersAboveAvgChirps();
 
 	//The average ratio of private versus public newspapers per publisher.

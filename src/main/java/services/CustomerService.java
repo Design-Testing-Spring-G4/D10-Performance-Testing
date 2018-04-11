@@ -76,4 +76,10 @@ public class CustomerService {
 
 		this.customerRepository.delete(customer);
 	}
+
+	//Ancillary methods
+
+	public Double ratioCustomerSubscriber() {
+		return this.customerRepository.ratioCustomerSubscriber();
+	}
 }

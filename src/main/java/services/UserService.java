@@ -81,4 +81,34 @@ public class UserService {
 
 		this.userRepository.delete(user);
 	}
+
+	//Ancillary methods
+
+	public Double[] avgstdNewspapersPerUser() {
+		return this.userRepository.avgstdNewspapersPerUser();
+	}
+
+	public Double[] avgstdArticlesPerWriter() {
+		return this.userRepository.avgstdArticlesPerWriter();
+	}
+
+	public Double ratioUsersWithNewspaper() {
+		return this.userRepository.ratioUsersWithNewspaper();
+	}
+
+	public Double ratioUsersWithArticle() {
+		return this.userRepository.ratioUsersWithArticle();
+	}
+
+	public Double[] avgstdChirpsPerUser() {
+		return this.userRepository.avgstdChirpsPerUser();
+	}
+
+	public Double usersAboveAvgChirps() {
+		return this.userRepository.usersAboveAvgChirps();
+	}
+
+	public Double ratioPrivatePublicPerUser(final int id) {
+		return this.userRepository.ratioPrivatePublicPerUser(id);
+	}
 }

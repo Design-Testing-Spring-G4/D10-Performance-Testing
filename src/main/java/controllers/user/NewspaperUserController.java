@@ -22,7 +22,7 @@ import domain.User;
 
 @Controller
 @RequestMapping("newspaper/user")
-public class NewspaperController extends AbstractController {
+public class NewspaperUserController extends AbstractController {
 
 	//Services
 
