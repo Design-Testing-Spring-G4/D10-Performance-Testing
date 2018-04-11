@@ -30,6 +30,8 @@
 <spring:message code="newspaper.description" var="description" />
 <spring:message code="newspaper.isPrivate" var="isPrivate" />
 <spring:message code="newspaper.display" var="display" />
+<spring:message code="newspaper.create" var="msgCreate" />
+
 
 <security:authorize access="permitAll()">
 
@@ -63,5 +65,8 @@
 	</display:column>
 	
 </display:table>
+
+<spring:url var="createUrl" value="newspaper/user/create.do"/>
+	<a href="${createUrl}"><jstl:out value="${msgCreate}"/></a>
 
 </security:authorize>
