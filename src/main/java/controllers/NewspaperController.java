@@ -43,7 +43,7 @@ public class NewspaperController extends AbstractController {
 	public ModelAndView listPublished() {
 		final ModelAndView result;
 		Collection<Newspaper> newspapers;
-		newspapers = this.newspaperService.newspapersPublished();
+		newspapers = this.newspaperService.newspapersForToPublish();
 		result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);
 		result.addObject("requestURI", "newspaper/list.do");

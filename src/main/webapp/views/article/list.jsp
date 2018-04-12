@@ -42,7 +42,7 @@
 
 	<%-- Attributes --%>
 
-	<display:column property="title" title="${title}" sortable="true" />
+	<display:column property="title" title="${title}"/>
 	
 	<display:column property="writer.userAccount.username" title="${writer}" sortable="true" />
 
@@ -50,9 +50,9 @@
 		<fmt:formatDate value="${row.moment}" pattern="${moment}" />
 	</display:column>
 	
-	<display:column property="summary" title="${summary}" sortable="true" />
+	<display:column property="summary" title="${summary}"/>
 
-	<display:column property="body" title="${body}" sortable="true" />
+	<display:column property="body" title="${body}"/>
 	
 	<display:column property="finalMode" title="${finalMode}" sortable="true" />
 	

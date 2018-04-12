@@ -31,7 +31,7 @@
 <spring:message code="newspaper.isPrivate" var="isPrivate" />
 <spring:message code="newspaper.display" var="display" />
 <spring:message code="newspaper.create" var="msgCreate" />
-
+<spring:message code="newspaper.dateInt" var="formatDate" />
 
 <security:authorize access="permitAll()">
 
@@ -42,20 +42,18 @@
 
 		<%-- Attributes --%>
 
-		<display:column property="title" title="${title}" sortable="true" />
+		<display:column property="title" title="${title}"/>
 
 		<display:column property="publisher.userAccount.username"
-			title="${publisher}" sortable="true" />
+			title="${publisher}"/>
 
-		<display:column title="${publicationDate}" sortable="true">
-			<fmt:formatDate value="${row.publicationDate}" type="BOTH" />
+		<display:column title="${publicationDate}">
+			<fmt:formatDate value="${row.publicationDate}" pattern="${formatDate}" />
 		</display:column>
 
-		<display:column property="description" title="${description}"
-			sortable="true" />
+		<display:column property="description" title="${description}"/>
 
-		<display:column property="isPrivate" title="${isPrivate}"
-			sortable="true" />
+		<display:column property="isPrivate" title="${isPrivate}"/>
 
 		<%-- Links towards edition, display and others --%>
 

@@ -16,7 +16,8 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -32,29 +33,30 @@
 <spring:message code="article.summary" var="articleSummary" />
 
 <%-- For the selected newspaper in the list received as model, display the following information: --%>
-	
+
 <security:authorize access="permitAll()">
 
 	<jstl:out value="${title}" />:&nbsp;
 	<jstl:out value="${newspaper.title}" />
 	<br />
-	
+
 	<jstl:out value="${description}" />:&nbsp;
 	<jstl:out value="${newspaper.description}" />
 	<br />
-	
+
 	<jstl:out value="${publicationDate}" />:&nbsp;
-	<fmt:formatDate value="${newspaper.publicationDate}" pattern="${formatDate}" />
+	<fmt:formatDate value="${newspaper.publicationDate}"
+		pattern="${formatDate}" />
 	<br />
-	
+
 	<jstl:if test="${newspaper.picture != ''}">
 		<img src="${newspaper.picture}" />
 		<br />
 	</jstl:if>
-	
+
 	<display:table pagesize="5" class="displaytag" keepStatus="false"
 		name="newspaper.articles" requestURI="${requestURI}" id="row">
-		
+
 		<spring:url var="articleUrl" value="article/display.do">
 			<spring:param name="varId" value="${row.id}" />
 		</spring:url>
@@ -62,7 +64,7 @@
 		<display:column>
 			<a href="${articleUrl}"><jstl:out value="${row.title}" /></a>
 		</display:column>
-		
+
 		<spring:url var="writerUrl" value="user/display.do">
 			<spring:param name="varId" value="${row.writer.id}" />
 		</spring:url>
@@ -70,11 +72,17 @@
 		<display:column>
 			<a href="${writerUrl}"><jstl:out value="${row.writer.name}" /></a>
 		</display:column>
-		
-		<display:column property="summary" title="${articleSummary}" sortable="true" />
-		
+
+		<display:column property="summary" title="${articleSummary}"
+			sortable="true" />
+
 	</display:table>
 
-<a href="newspaper/list.do"><jstl:out value="${msgReturn}" /></a>
+	<security:authorize access="hasRole('USER')">
+		<spring:url var="createUrl" value="article/user/create.do" />
+		<a href="${createUrl}"><jstl:out value="${msgCreate}" /></a>
+	</security:authorize>
+
+	<a href="newspaper/list.do"><jstl:out value="${msgReturn}" /></a>
 
 </security:authorize>

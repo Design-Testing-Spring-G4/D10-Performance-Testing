@@ -37,9 +37,6 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 	@Query("select avg(n.articles.size) from Newspaper n where n.isPrivate = false")
 	Double avgArticlesPerPublicNewspaper();
 
-	@Query("select n from Newspaper n where n.publicationDate <= ?1")
-	Collection<Newspaper> newspapersPublished(Date date);
-
-	@Query("select n from Newspaper n join n.articles a where a.finalMode = true")
-	Collection<Newspaper> newspapersWithArticlesInFinalMode();
+	@Query("select n from Newspaper n join n.articles a where a.finalMode = true and n.publicationDate <= ?1")
+	Collection<Newspaper> newspapersForToPublish(Date date);
 }

@@ -101,8 +101,8 @@ public class NewspaperService {
 		return this.newspaperRepository.avgArticlesPerPublicNewspaper();
 	}
 
-	public Collection<Newspaper> newspapersPublished() {
-		return this.newspaperRepository.newspapersPublished(new Date(System.currentTimeMillis()));
+	public Collection<Newspaper> newspapersForToPublish() {
+		return this.newspaperRepository.newspapersForToPublish(new Date(System.currentTimeMillis()));
 	}
 
 }
