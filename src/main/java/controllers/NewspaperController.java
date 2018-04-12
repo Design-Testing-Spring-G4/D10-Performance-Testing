@@ -66,5 +66,29 @@ public class NewspaperController extends AbstractController {
 
 		return result;
 	}
+//Search 
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView search() {
+		final ModelAndView result;
+
+		result = new ModelAndView("newspaper/search");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST, params = "results")
+	public ModelAndView results(@RequestParam final String keyword) {
+		ModelAndView result;
+		Collection<Newspaper> newspapers;
+		newspapers = this.newspaperService.findByKeyword(keyword);
+
+		result = new ModelAndView("newspaper/list");
+		result.addObject("newspapers", newspapers);
+		result.addObject("requestURI", "newspaper/list.do");
+
+		return result;
+	}
+
 
 }

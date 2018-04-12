@@ -55,7 +55,7 @@
 
 						<li><a href="newspaper/user/list.do"><spring:message
 									code="master.page.list.newspaper" /></a></li>
-						
+
 					</security:authorize>
 
 					<security:authorize access="hasRole('CUSTOMER')">
@@ -80,8 +80,17 @@
 						code="master.page.list.newspaper" /></a></li>
 			<li><a href="user/list.do"><spring:message
 						code="master.page.list.user" /></a></li>
-<li><a href="article/search.do"><spring:message
-						code="article.search" /></a></li>			
+			<li><a class="fNiv"><spring:message
+						code="master.page.search" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="article/search.do"><spring:message
+								code="master.page.article.search" /></a></li>
+					<li><a href="newspaper/search.do"><spring:message
+								code="master.page.newspaper.search" /></a>
+					<li>
+				</ul></li>
+	
 		</security:authorize>
 
 	</ul>

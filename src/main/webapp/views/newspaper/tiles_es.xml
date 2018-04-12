@@ -24,5 +24,10 @@
 		<put-attribute name="title" value="Mostrar periódico" />
 		<put-attribute name="body" value="/views/newspaper/display.jsp" />
 	</definition>
+	
+	<definition name="newspaper/search" extends="master.page">	
+		<put-attribute name="title" value="Buscar periódicos" />
+		<put-attribute name="body" value="/views/newspaper/search.jsp" />
+	</definition>
 
 </tiles-definitions>

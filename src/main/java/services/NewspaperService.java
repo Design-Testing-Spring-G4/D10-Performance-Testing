@@ -75,6 +75,17 @@ public class NewspaperService {
 		this.newspaperRepository.delete(newspaper);
 	}
 
+//Other methods
+
+public Collection<Newspaper> findByKeyword(final String word) {
+		final Collection<Newspaper> res = new ArrayList<Newspaper>();
+
+		for (final Newspaper n : this.findAll())
+			if (n.getTitle().contains(word) || n.getDescription().contains(word))
+				res.add(n);
+		return res;
+	}
+
 	//Ancillary methods
 
 	public Double[] avgstdArticlesPerNewspaper() {
