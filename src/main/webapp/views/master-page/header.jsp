@@ -80,6 +80,8 @@
 						code="master.page.list.newspaper" /></a></li>
 			<li><a href="user/list.do"><spring:message
 						code="master.page.list.user" /></a></li>
+<li><a href="article/search.do"><spring:message
+						code="article.search" /></a></li>			
 		</security:authorize>
 
 	</ul>
