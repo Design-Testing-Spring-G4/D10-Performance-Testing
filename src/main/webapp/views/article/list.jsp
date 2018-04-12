@@ -32,6 +32,8 @@
 <spring:message code="article.finalMode" var="finalMode" />
 <spring:message code="article.display" var="display" />
 <spring:message code="article.create" var="msgCreate" />
+<spring:message code="article.dateInt" var="formatDate" />
+
 
 <security:authorize access="permitAll()">
 
@@ -47,7 +49,7 @@
 	<display:column property="writer.userAccount.username" title="${writer}" sortable="true" />
 
 	<display:column title="${moment}" sortable="true">
-		<fmt:formatDate value="${row.moment}" pattern="${moment}" />
+		<fmt:formatDate value="${row.moment}" pattern="${formatDate}" />
 	</display:column>
 	
 	<display:column property="summary" title="${summary}"/>
