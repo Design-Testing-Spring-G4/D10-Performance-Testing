@@ -39,13 +39,13 @@ public class NewspaperUserController extends AbstractController {
 	public ModelAndView list() {
 		final ModelAndView result;
 		Collection<Newspaper> newspapers;
-
+		final boolean forCreate = false;
 		newspapers = ((User) this.actorService.findByPrincipal()).getNewspapers();
 
 		result = new ModelAndView("newspaper/list");
 		result.addObject("newspapers", newspapers);
 		result.addObject("requestURI", "newspaper/list.do");
-
+		result.addObject("forCreate", forCreate);
 		return result;
 	}
 

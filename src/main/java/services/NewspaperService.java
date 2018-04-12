@@ -75,9 +75,9 @@ public class NewspaperService {
 		this.newspaperRepository.delete(newspaper);
 	}
 
-//Other methods
+	//Other methods
 
-public Collection<Newspaper> findByKeyword(final String word) {
+	public Collection<Newspaper> findByKeyword(final String word) {
 		final Collection<Newspaper> res = new ArrayList<Newspaper>();
 
 		for (final Newspaper n : this.findAll())
@@ -114,6 +114,10 @@ public Collection<Newspaper> findByKeyword(final String word) {
 
 	public Collection<Newspaper> newspapersForToPublish() {
 		return this.newspaperRepository.newspapersForToPublish(new Date(System.currentTimeMillis()));
+	}
+
+	public Collection<Newspaper> newspapersForNotToPublish() {
+		return this.newspaperRepository.newspapersForNotToPublish(new Date(System.currentTimeMillis()));
 	}
 
 }

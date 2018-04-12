@@ -54,7 +54,9 @@
 					<security:authorize access="hasRole('USER')">
 
 						<li><a href="newspaper/user/list.do"><spring:message
-									code="master.page.list.newspaper" /></a></li>
+									code="master.page.list.newspaperUser" /></a></li>
+						<li><a href="newspaper/listNotPublished.do"><spring:message
+									code="master.page.create.article" /></a></li>
 
 					</security:authorize>
 
@@ -90,7 +92,7 @@
 								code="master.page.newspaper.search" /></a>
 					<li>
 				</ul></li>
-	
+
 		</security:authorize>
 
 	</ul>

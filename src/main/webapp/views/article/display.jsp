@@ -28,12 +28,13 @@
 <spring:message code="article.summary" var="summary" />
 <spring:message code="article.body" var="body" />
 <spring:message code="article.finalMode" var="finalMode" />
+<spring:message code="article.dateInt" var="formatDate" />
 
 <%-- For the selected newspaper in the list received as model, display the following information: --%>
 	
 <security:authorize access="permitAll()">
 
-	<jstl:out value="${title}" />:&nbsp;
+	<jstl:out value="${articleTitle}" />:&nbsp;
 	<jstl:out value="${article.title}" />
 	<br />
 	

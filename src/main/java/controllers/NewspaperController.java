@@ -51,6 +51,20 @@ public class NewspaperController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/listNotPublished", method = RequestMethod.GET)
+	public ModelAndView listNotPublished() {
+		final ModelAndView result;
+		Collection<Newspaper> newspapers;
+		final boolean forCreate = true;
+		newspapers = this.newspaperService.newspapersForNotToPublish();
+
+		result = new ModelAndView("newspaper/list");
+		result.addObject("newspapers", newspapers);
+		result.addObject("requestURI", "newspaper/list.do");
+		result.addObject("forCreate", forCreate);
+
+		return result;
+	}
 	//Display
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
@@ -66,7 +80,7 @@ public class NewspaperController extends AbstractController {
 
 		return result;
 	}
-//Search 
+	//Search 
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView search() {
@@ -89,6 +103,5 @@ public class NewspaperController extends AbstractController {
 
 		return result;
 	}
-
 
 }

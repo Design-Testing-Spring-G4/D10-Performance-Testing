@@ -32,6 +32,8 @@
 <spring:message code="newspaper.display" var="display" />
 <spring:message code="newspaper.create" var="msgCreate" />
 <spring:message code="newspaper.dateInt" var="formatDate" />
+<spring:message code="acrticle.create" var="msgCreateArticle" />
+
 
 <security:authorize access="permitAll()">
 
@@ -42,23 +44,21 @@
 
 		<%-- Attributes --%>
 
-		<display:column property="title" title="${title}"/>
+		<display:column property="title" title="${title}" />
 
 		<display:column property="publisher.userAccount.username"
-			title="${publisher}"/>
+			title="${publisher}" />
 
 		<display:column title="${publicationDate}">
-			<fmt:formatDate value="${row.publicationDate}" pattern="${formatDate}" />
+			<fmt:formatDate value="${row.publicationDate}"
+				pattern="${formatDate}" />
 		</display:column>
 
-		<display:column property="description" title="${description}"/>
+		<display:column property="description" title="${description}" />
 
-		<display:column property="isPrivate" title="${isPrivate}"/>
+		<display:column property="isPrivate" title="${isPrivate}" />
 
 		<%-- Links towards edition, display and others --%>
-
-
-
 
 		<spring:url var="displayUrl" value="newspaper/display.do">
 			<spring:param name="varId" value="${row.id}" />
@@ -68,6 +68,17 @@
 			<a href="${displayUrl}"><jstl:out value="${display}" /></a>
 		</display:column>
 
+		<jstl:if test="${forCreate == true}">
+			<spring:url var="createArticle" value="article/user/create.do">
+				<spring:param name="varId" value="${row.id}" />
+			</spring:url>
+
+			<display:column>
+				<a href="${createArticle}"><jstl:out value="${msgCreateArticle}" /></a>
+			</display:column>
+		</jstl:if>
+		
+	
 	</display:table>
 	<security:authorize access="hasRole('USER')">
 		<spring:url var="createUrl" value="newspaper/user/create.do" />

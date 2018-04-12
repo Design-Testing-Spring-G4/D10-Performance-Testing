@@ -13,6 +13,7 @@ import repositories.ArticleRepository;
 import domain.Article;
 import domain.Followup;
 import domain.Newspaper;
+import domain.User;
 
 @Service
 @Transactional
@@ -23,17 +24,24 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository	articleRepository;
 
+	@Autowired
+	private NewspaperService	newspaperService;
+
+	@Autowired
+	private ActorService		actorService;
+
 
 	//Simple CRUD Methods --------------------------------
 
-	public Article create(final Newspaper newspaper) {
+	public Article create(final int varId) {
 		final Article article = new Article();
-
+		final Newspaper newspaper = this.newspaperService.findOne(varId);
+		Assert.notNull(newspaper);
+		article.setWriter(((User) this.actorService.findByPrincipal()));
 		article.setFinalMode(false);
 		article.setFollowups(new ArrayList<Followup>());
 		article.setPictures(new ArrayList<String>());
-		article.setMoment(newspaper.getPublicationDate());
-
+		newspaper.getArticles().add(article);
 		return article;
 	}
 
@@ -49,7 +57,7 @@ public class ArticleService {
 
 	public Article save(final Article article) {
 		Assert.notNull(article);
-
+		Assert.notNull(this.actorService.findByPrincipal());
 		final Article saved = this.articleRepository.save(article);
 
 		return saved;
@@ -57,7 +65,6 @@ public class ArticleService {
 
 	public void delete(final Article article) {
 		Assert.notNull(article);
-
 		this.articleRepository.delete(article);
 	}
 

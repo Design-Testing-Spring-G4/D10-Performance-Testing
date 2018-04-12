@@ -60,7 +60,7 @@
 	
 	<%-- Links towards edition, display and others --%>
 
-	<spring:url var="displayUrl" value="newspaper/display.do">
+	<spring:url var="displayUrl" value="article/display.do">
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 
@@ -70,7 +70,6 @@
 	
 </display:table>
 
-<spring:url var="createUrl" value="article/user/create.do"/>
-	<a href="${createUrl}"><jstl:out value="${msgCreate}"/></a>
+
 	
 </security:authorize>
