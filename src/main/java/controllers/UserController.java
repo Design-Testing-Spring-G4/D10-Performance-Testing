@@ -1,14 +1,7 @@
-/*
- * AdministratorController.java
- * 
- * Copyright (C) 2017 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the
- * TDG Licence, a copy of which you may download from
- * http://www.tdg-seville.info/License.html
- */
 
 package controllers;
+
+import java.util.Collection;
 
 import javax.validation.Valid;
 
@@ -17,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
@@ -24,7 +18,7 @@ import services.UserService;
 import domain.User;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController extends AbstractController {
 
 	//Services
@@ -49,6 +43,37 @@ public class UserController extends AbstractController {
 		return result;
 	}
 
+	//Listing
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		final ModelAndView result;
+		Collection<User> users;
+
+		users = this.userService.findAll();
+
+		result = new ModelAndView("user/list");
+		result.addObject("users", users);
+		result.addObject("requestURI", "user/list.do");
+
+		return result;
+	}
+
+	//Display
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int varId) {
+		ModelAndView result;
+		User user;
+		user = this.userService.findOne(varId);
+
+		result = new ModelAndView("user/display");
+		result.addObject("user", user);
+		result.addObject("requestURI", "user/display.do");
+
+		return result;
+	}
+
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final User user, final BindingResult binding) {
 		ModelAndView result;
@@ -67,6 +92,7 @@ public class UserController extends AbstractController {
 			}
 		return result;
 	}
+
 	//Ancillary methods
 
 	protected ModelAndView createEditModelAndView(final User user) {
