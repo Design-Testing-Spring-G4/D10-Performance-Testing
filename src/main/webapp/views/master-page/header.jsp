@@ -54,9 +54,8 @@
 					<security:authorize access="hasRole('USER')">
 
 						<li><a href="newspaper/user/list.do"><spring:message
-									code="master.page.user.list.newspaper" /></a></li>
-						<li><a href="article/user/list.do"><spring:message
-									code="master.page.user.list.article" /></a></li>
+									code="master.page.list.newspaper" /></a></li>
+						
 					</security:authorize>
 
 					<security:authorize access="hasRole('CUSTOMER')">

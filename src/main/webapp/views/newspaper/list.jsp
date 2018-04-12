@@ -20,7 +20,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%-- Stored message variables --%>
 
@@ -35,43 +35,45 @@
 
 <security:authorize access="permitAll()">
 
-<%-- Listing grid --%>
+	<%-- Listing grid --%>
 
-<display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="newspapers" requestURI="${requestURI}" id="row">
+	<display:table pagesize="5" class="displaytag" keepStatus="false"
+		name="newspapers" requestURI="${requestURI}" id="row">
 
-	<%-- Attributes --%>
+		<%-- Attributes --%>
 
-	<display:column property="title" title="${title}" sortable="true" />
-	
-	<display:column property="publisher.userAccount.username" title="${publisher}" sortable="true" />
+		<display:column property="title" title="${title}" sortable="true" />
 
-	<display:column title="${publicationDate}" sortable="true">
-		<fmt:formatDate value="${row.publicationDate}" type="BOTH" />
-	</display:column>
-	
-	<display:column property="description" title="${description}" sortable="true" />
+		<display:column property="publisher.userAccount.username"
+			title="${publisher}" sortable="true" />
 
-	<display:column property="isPrivate" title="${isPrivate}" sortable="true" />
-	
-	<%-- Links towards edition, display and others --%>
+		<display:column title="${publicationDate}" sortable="true">
+			<fmt:formatDate value="${row.publicationDate}" type="BOTH" />
+		</display:column>
 
-	<spring:url var="displayUrl" value="newspaper/display.do">
-		<spring:param name="varId" value="${row.id}" />
-	</spring:url>
+		<display:column property="description" title="${description}"
+			sortable="true" />
 
-	<display:column>
-		<a href="${displayUrl}"><jstl:out value="${display}" /></a>
-	</display:column>
-	
-	
-	
+		<display:column property="isPrivate" title="${isPrivate}"
+			sortable="true" />
 
-	
-</display:table>
-<security:authorize access="hasRole('USER')">
-	<spring:url var="createUrl" value="newspaper/user/create.do"/>
-		<a href="${createUrl}"><jstl:out value="${msgCreate}"/></a>
-</security:authorize>
+		<%-- Links towards edition, display and others --%>
+
+
+
+
+		<spring:url var="displayUrl" value="newspaper/display.do">
+			<spring:param name="varId" value="${row.id}" />
+		</spring:url>
+
+		<display:column>
+			<a href="${displayUrl}"><jstl:out value="${display}" /></a>
+		</display:column>
+
+	</display:table>
+	<security:authorize access="hasRole('USER')">
+		<spring:url var="createUrl" value="newspaper/user/create.do" />
+		<a href="${createUrl}"><jstl:out value="${msgCreate}" /></a>
+	</security:authorize>
 
 </security:authorize>

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.NewspaperService;
-import services.UserService;
 import controllers.AbstractController;
 import domain.Newspaper;
 import domain.User;
@@ -32,9 +31,6 @@ public class NewspaperUserController extends AbstractController {
 
 	@Autowired
 	private ActorService		actorService;
-
-	@Autowired
-	private UserService			userService;
 
 
 	//Listing
@@ -150,7 +146,7 @@ public class NewspaperUserController extends AbstractController {
 		result.addObject("newspaper", newspaper);
 		result.addObject("newspapers", newspapers);
 		result.addObject("message", messageCode);
-		result.addObject("requestURI", "newspaper/edit.do");
+		result.addObject("requestURI", "newspaper/user/edit.do");
 
 		return result;
 

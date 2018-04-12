@@ -38,7 +38,7 @@
 <%-- Listing grid --%>
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="newspapers" requestURI="${requestURI}" id="row">
+	name="articles" requestURI="${requestURI}" id="row">
 
 	<%-- Attributes --%>
 

@@ -44,6 +44,4 @@
 <p><spring:message code="legislation.lopd11"/></p>
 <p><spring:message code="legislation.lopd12"/></p>
 
-<b><spring:message code="legislation.title8"/></b>
-<p><spring:message code="legislation.lopd13"/></p>
 </security:authorize>
