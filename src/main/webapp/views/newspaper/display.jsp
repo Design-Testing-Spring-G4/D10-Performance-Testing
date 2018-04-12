@@ -60,15 +60,15 @@
 		</spring:url>
 
 		<display:column>
-			<a href="${articleUrl}"><jstl:out value="${articleTitle}" /></a>
+			<a href="${articleUrl}"><jstl:out value="${row.title}" /></a>
 		</display:column>
 		
 		<spring:url var="writerUrl" value="user/display.do">
-			<spring:param name="varId" value="${row.id}" />
+			<spring:param name="varId" value="${row.writer.id}" />
 		</spring:url>
 
 		<display:column>
-			<a href="${writerUrl}"><jstl:out value="${articleWriter}" /></a>
+			<a href="${writerUrl}"><jstl:out value="${row.writer.name}" /></a>
 		</display:column>
 		
 		<display:column property="summary" title="${articleSummary}" sortable="true" />

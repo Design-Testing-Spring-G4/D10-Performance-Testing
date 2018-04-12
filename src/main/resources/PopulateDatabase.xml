@@ -282,9 +282,9 @@
 	<!-- Article beans -->
 	
 	<bean id="article1" class="domain.Article">
-		<property name="title" value="Lorem ipsum dolor sit amet"/>
+		<property name="title" value="Lorem ipsum"/>
 		<property name="moment" value="30/08/2017"/>
-		<property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, justo eget porttitor consequat, enim magna ornare libero, ac lacinia lectus tortor dapibus dolor. Nam laoreet porta dignissim. Pellentesque tincidunt, lorem et consequat semper."/>
+		<property name="summary" value="Fusce ultrices, justo eget"/>
 		<property name="body" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, justo eget porttitor consequat, enim magna ornare libero, ac lacinia lectus tortor dapibus dolor. Nam laoreet porta dignissim. Pellentesque tincidunt, lorem et consequat semper."/>
 		<property name="pictures">
 			<list>
@@ -300,10 +300,10 @@
 	</bean>
 	
 	<bean id="article2" class="domain.Article">
-		<property name="title" value="Lorem ipsum dolor sit amet"/>
-		<property name="moment" value="30/08/2017"/>
-		<property name="summary" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, justo eget porttitor consequat, enim magna ornare libero, ac lacinia lectus tortor dapibus dolor. Nam laoreet porta dignissim. Pellentesque tincidunt, lorem et consequat semper."/>
-		<property name="body" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, justo eget porttitor consequat, enim magna ornare libero, ac lacinia lectus tortor dapibus dolor. Nam laoreet porta dignissim. Pellentesque tincidunt, lorem et consequat semper."/>
+		<property name="title" value="New year"/>
+		<property name="moment" value="15/09/2017"/>
+		<property name="summary" value="This is the second article"/>
+		<property name="body" value="In the Gregorian calendar, the most widely used calendar system today, New Year occurs on January 1 (New Year's Day). This was also the case both in the Roman calendar (at least after about 713 BC) and in the Julian calendar that succeeded it."/>
 		<property name="pictures">
 			<list>
 			</list>

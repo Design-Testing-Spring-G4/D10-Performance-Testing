@@ -111,4 +111,9 @@ public class UserService {
 	public Double ratioPrivatePublicPerUser(final int id) {
 		return this.userRepository.ratioPrivatePublicPerUser(id);
 	}
+
+	public Collection<Article> articlesPublishedPerUser(final int id) {
+		return this.userRepository.articlesPublishedPerUser(id);
+	}
+
 }

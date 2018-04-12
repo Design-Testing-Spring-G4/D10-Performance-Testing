@@ -1,10 +1,13 @@
 
 package repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import domain.Article;
 import domain.User;
 
 @Repository
@@ -37,4 +40,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	//The average ratio of private versus public newspapers per publisher.
 	@Query("select (select count(n) from User u join u.newspapers n where n.isPrivate = true and n.publisher.id = ?1)*1.0/count(n) from User u join u.newspapers n where n.isPrivate = false and n.publisher.id = ?1")
 	Double ratioPrivatePublicPerUser(int id);
+
+	@Query("select a from User u join u.articles a where a.finalMode = true and a.writer.id = ?1")
+	Collection<Article> articlesPublishedPerUser(int id);
+
 }

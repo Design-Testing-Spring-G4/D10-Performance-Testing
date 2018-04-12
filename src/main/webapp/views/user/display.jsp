@@ -23,43 +23,47 @@
 <%-- Stored message variables --%>
 
 
-<spring:message code="article.title" var="articleTitle" />
-<spring:message code="article.moment" var="moment" />
-<spring:message code="article.summary" var="summary" />
-<spring:message code="article.body" var="body" />
-<spring:message code="article.finalMode" var="finalMode" />
+<spring:message code="user.name" var="name" />
+<spring:message code="user.surname" var="surname" />
+<spring:message code="user.email" var="email" />
+<spring:message code="user.phone" var="phone" />
+<spring:message code="user.address" var="address" />
+<spring:message code="user.articles" var="msgListArticles" />
 
 <%-- For the selected newspaper in the list received as model, display the following information: --%>
 	
 <security:authorize access="permitAll()">
 
-	<jstl:out value="${title}" />:&nbsp;
-	<jstl:out value="${article.title}" />
+	<jstl:out value="${name}" />:&nbsp;
+	<jstl:out value="${user.name}" />
 	<br />
 	
-	<jstl:out value="${moment}" />:&nbsp;
-	<fmt:formatDate value="${article.moment}" pattern="${formatDate}" />
+	<jstl:out value="${surname}" />:&nbsp;
+	<jstl:out value="${user.surname}" />
 	<br />
 	
-	<jstl:out value="${summary}" />:&nbsp;
-	<jstl:out value="${article.summary}" />
+	<jstl:out value="${email}" />:&nbsp;
+	<jstl:out value="${user.email}" />
 	<br />
 	
-	<jstl:out value="${body}" />:&nbsp;
-	<jstl:out value="${article.body}" />
+	<jstl:out value="${phone}" />:&nbsp;
+	<jstl:out value="${user.phone}" />
 	<br />
 	
-	<jstl:out value="${finalMode}" />:&nbsp;
-	<jstl:out value="${article.finalMode}" />
+	<jstl:out value="${address}" />:&nbsp;
+	<jstl:out value="${user.address}" />
+	<br />
+
+	<spring:url var="listArticles" value="article/user/listPublished.do">
+		<spring:param name="varId" value="${user.id}" />
+	</spring:url>
+
+	<jstl:out value="${msgListArticles}" />:
+	<a href="${listArticles}"><jstl:out value="${user.name}" /></a>
 	<br />
 	
-	<jstl:if test="${newspaper.picture != ''}">
-		<img src="${newspaper.picture}" />
-<%-- 		<jstl:forEach var="picture" items="${newspaper.picture}">
-		<img src="${newspaper.picture}" />
-		</jstl:forEach>
-		<br /> --%>
-	</jstl:if>
 	
+		
+
 
 </security:authorize>

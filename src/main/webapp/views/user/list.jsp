@@ -24,13 +24,10 @@
 
 <%-- Stored message variables --%>
 
-<spring:message code="newspaper.title" var="title" />
-<spring:message code="newspaper.publisher" var="publisher" />
-<spring:message code="newspaper.publicationDate" var="publicationDate" />
-<spring:message code="newspaper.description" var="description" />
-<spring:message code="newspaper.isPrivate" var="isPrivate" />
-<spring:message code="newspaper.display" var="display" />
-<spring:message code="newspaper.create" var="msgCreate" />
+<spring:message code="user.name" var="name" />
+<spring:message code="user.surname" var="surname" />
+<spring:message code="user.email" var="email" />
+<spring:message code="user.display" var="display" />
 
 
 <security:authorize access="permitAll()">
@@ -38,40 +35,26 @@
 <%-- Listing grid --%>
 
 <display:table pagesize="5" class="displaytag" keepStatus="false"
-	name="newspapers" requestURI="${requestURI}" id="row">
+	name="users" requestURI="${requestURI}" id="row">
 
 	<%-- Attributes --%>
-
-	<display:column property="title" title="${title}" sortable="true" />
 	
-	<display:column property="publisher.userAccount.username" title="${publisher}" sortable="true" />
+	<display:column property="name" title="${name}" sortable="true" />
 
-	<display:column title="${publicationDate}" sortable="true">
-		<fmt:formatDate value="${row.publicationDate}" pattern="${formatDate}" />
-	</display:column>
+	<display:column property="surname" title="${surname}" sortable="true" />
 	
-	<display:column property="description" title="${description}" sortable="true" />
-
-	<display:column property="isPrivate" title="${isPrivate}" sortable="true" />
+	<display:column property="email" title="${email}" sortable="true" />
 	
-	<%-- Links towards edition, display and others --%>
-
-	<spring:url var="displayUrl" value="newspaper/display.do">
+	<spring:url var="displayUrl" value="user/display.do">
 		<spring:param name="varId" value="${row.id}" />
 	</spring:url>
 
 	<display:column>
 		<a href="${displayUrl}"><jstl:out value="${display}" /></a>
 	</display:column>
-	
-	
-	
 
 	
 </display:table>
-<security:authorize access="hasRole('USER')">
-	<spring:url var="createUrl" value="newspaper/user/create.do"/>
-		<a href="${createUrl}"><jstl:out value="${msgCreate}"/></a>
-</security:authorize>
+
 
 </security:authorize>
