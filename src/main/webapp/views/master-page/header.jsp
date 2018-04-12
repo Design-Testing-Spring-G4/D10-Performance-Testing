@@ -77,7 +77,7 @@
 		</security:authorize>
 
 		<security:authorize access="permitAll">
-			<li><a href="newspaper/list.do"><spring:message
+			<li><a href="newspaper/listPublished.do"><spring:message
 						code="master.page.list.newspaper" /></a></li>
 			<li><a href="user/list.do"><spring:message
 						code="master.page.list.user" /></a></li>

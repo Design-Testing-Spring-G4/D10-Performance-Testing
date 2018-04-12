@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.NewspaperService;
+import services.UserService;
 import controllers.AbstractController;
 import domain.Newspaper;
 import domain.User;
@@ -31,6 +32,9 @@ public class NewspaperUserController extends AbstractController {
 
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private UserService			userService;
 
 
 	//Listing

@@ -47,7 +47,7 @@
 	<display:column property="publisher.userAccount.username" title="${publisher}" sortable="true" />
 
 	<display:column title="${publicationDate}" sortable="true">
-		<fmt:formatDate value="${row.publicationDate}" pattern="${formatDate}" />
+		<fmt:formatDate value="${row.publicationDate}" type="BOTH" />
 	</display:column>
 	
 	<display:column property="description" title="${description}" sortable="true" />

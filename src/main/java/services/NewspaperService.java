@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,4 +100,9 @@ public class NewspaperService {
 	public Double avgArticlesPerPublicNewspaper() {
 		return this.newspaperRepository.avgArticlesPerPublicNewspaper();
 	}
+
+	public Collection<Newspaper> newspapersPublished() {
+		return this.newspaperRepository.newspapersPublished(new Date(System.currentTimeMillis()));
+	}
+
 }

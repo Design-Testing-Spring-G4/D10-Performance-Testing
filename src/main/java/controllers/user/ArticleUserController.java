@@ -50,7 +50,7 @@ public class ArticleUserController extends AbstractController {
 		Collection<Article> articles;
 		final User user = ((User) this.actorService.findByPrincipal());
 		articles = this.userService.articlesPublishedPerUser(user.getId());
-
+		System.out.println("articles------>>>>" + articles);
 		result = new ModelAndView("article/list");
 		result.addObject("articles", articles);
 		result.addObject("requestURI", "article/list.do");
