@@ -61,6 +61,17 @@ public class ArticleService {
 		this.articleRepository.delete(article);
 	}
 
+	//Other methods
+
+	public Collection<Article> findByKeyword(final String word) {
+		final Collection<Article> res = new ArrayList<Article>();
+
+		for (final Article a : this.findAll())
+			if (a.getTitle().contains(word) || a.getSummary().contains(word) || a.getBody().contains(word))
+				res.add(a);
+		return res;
+	}
+
 	//Ancillary methods
 
 	public Double avgFollowupsPerArticle() {

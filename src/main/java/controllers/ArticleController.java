@@ -54,4 +54,26 @@ public class ArticleController extends AbstractController {
 		return result;
 	}
 
+	//Search
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView search() {
+		final ModelAndView result;
+
+		result = new ModelAndView("article/search");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST, params = "results")
+	public ModelAndView results(@RequestParam final String keyword) {
+		ModelAndView result;
+		Collection<Article> articles;
+		articles = this.articleService.findByKeyword(keyword);
+
+		result = new ModelAndView("article/list");
+		result.addObject("articles", articles);
+		result.addObject("requestURI", "article/list.do");
+
+		return result;
+	}
 }

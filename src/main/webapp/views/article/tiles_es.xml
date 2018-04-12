@@ -17,13 +17,17 @@
 <tiles-definitions>
 
 	<definition name="article/list" extends="master.page">	
-		<put-attribute name="title" value="Lista de articulos" />
+		<put-attribute name="title" value="Lista de artículos" />
 		<put-attribute name="body" value="/views/article/list.jsp" />
 	</definition>
 	
 	<definition name="article/display" extends="master.page">	
-		<put-attribute name="title" value="Mostrar articulos" />
+		<put-attribute name="title" value="Mostrar artículos" />
 		<put-attribute name="body" value="/views/article/display.jsp" />
 	</definition>
 	
+	<definition name="article/search" extends="master.page">	
+		<put-attribute name="title" value="Buscar artículos" />
+		<put-attribute name="body" value="/views/article/search.jsp" />
+	</definition>
 </tiles-definitions>
