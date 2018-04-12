@@ -39,6 +39,18 @@ public class NewspaperController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/listPublished", method = RequestMethod.GET)
+	public ModelAndView listPublished() {
+		final ModelAndView result;
+		Collection<Newspaper> newspapers;
+		newspapers = this.newspaperService.newspapersPublished();
+		result = new ModelAndView("newspaper/list");
+		result.addObject("newspapers", newspapers);
+		result.addObject("requestURI", "newspaper/list.do");
+
+		return result;
+	}
+
 	//Display
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)

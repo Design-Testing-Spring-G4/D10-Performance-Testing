@@ -2,6 +2,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -35,4 +36,7 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 	//The average number of articles per public newspapers
 	@Query("select avg(n.articles.size) from Newspaper n where n.isPrivate = false")
 	Double avgArticlesPerPublicNewspaper();
+
+	@Query("select n from Newspaper n where n.publicationDate <= ?1")
+	Collection<Newspaper> newspapersPublished(Date date);
 }
