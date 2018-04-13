@@ -53,7 +53,7 @@
 
 			<form:label path="publicationDate">
 				<jstl:out value="${msgPublicationDate}" />:</form:label>
-			<form:textarea path="publicationDate" placeholder="dd/MM/yy HH:mm" />
+			<form:textarea path="publicationDate" placeholder="dd/MM/yy" />
 			<form:errors cssClass="error" path="publicationDate" />
 			<br />
 			<br />

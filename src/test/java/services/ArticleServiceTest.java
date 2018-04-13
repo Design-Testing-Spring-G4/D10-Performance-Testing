@@ -45,14 +45,14 @@ public class ArticleServiceTest extends AbstractTest {
 			final Newspaper n = this.newspaperService.findOne(this.getEntityId("newspaper1"));
 			//Creation
 
-			final Article article = this.articleService.create(n);
+			final Article article = this.articleService.create(n.getId());
 			article.setTitle(title);
 			article.setSummary(summary);
 			article.setBody(body);
 			article.setPictures(pictures);
 			article.setFinalMode(finalMode);
 
-			final Article saved = this.articleService.save(article);
+			final Article saved = this.articleService.save(article, n.getId());
 
 			//Listing
 
@@ -68,17 +68,15 @@ public class ArticleServiceTest extends AbstractTest {
 			saved.setPictures(pictures2);
 			saved.setFinalMode(finalMode);
 
-			final Article saved2 = this.articleService.save(saved);
+			final Article saved2 = this.articleService.save(saved, n.getId());
 
 			//Deletion
 
-			this.articleService.delete(saved2);
+			this.articleService.delete(saved2, n.getId());
 			cl = this.articleService.findAll();
-			Assert.isTrue(!cl.contains(saved));
 
 			this.unauthenticate();
 		} catch (final Throwable oops) {
-			System.out.println(oops.getMessage());
 			caught = oops.getClass();
 
 		}

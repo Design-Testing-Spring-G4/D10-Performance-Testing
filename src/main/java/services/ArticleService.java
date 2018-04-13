@@ -41,7 +41,7 @@ public class ArticleService {
 		article.setFinalMode(false);
 		article.setFollowups(new ArrayList<Followup>());
 		article.setPictures(new ArrayList<String>());
-		newspaper.getArticles().add(article);
+		article.setMoment(newspaper.getPublicationDate());
 		return article;
 	}
 
@@ -55,16 +55,26 @@ public class ArticleService {
 		return this.articleRepository.findOne(id);
 	}
 
-	public Article save(final Article article) {
+	public Article save(final Article article, final Integer varId) {
 		Assert.notNull(article);
 		Assert.notNull(this.actorService.findByPrincipal());
 		final Article saved = this.articleRepository.save(article);
 
+		final Newspaper newspaper = this.newspaperService.findOne(varId);
+		Assert.notNull(newspaper);
+		newspaper.getArticles().add(saved);
+		this.newspaperService.saveInternal(newspaper);
+
 		return saved;
 	}
 
-	public void delete(final Article article) {
+	public void delete(final Article article, final Integer varId) {
 		Assert.notNull(article);
+		final Newspaper newspaper = this.newspaperService.findOne(varId);
+		Assert.notNull(newspaper);
+		newspaper.getArticles().remove(article);
+		this.newspaperService.saveInternal(newspaper);
+
 		this.articleRepository.delete(article);
 	}
 

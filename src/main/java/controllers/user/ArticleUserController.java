@@ -3,8 +3,12 @@ package controllers.user;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,12 +40,56 @@ public class ArticleUserController extends AbstractController {
 	//Creation
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(@RequestParam final int varId) {
+	public ModelAndView create(@RequestParam final Integer varId) {
 		final ModelAndView result;
 		Article article;
-		System.out.println("id: " + varId);
 		article = this.articleService.create(varId);
-		result = this.createEditModelAndView(article);
+		result = this.createEditModelAndView(article, varId);
+		return result;
+	}
+
+	//Edition
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final Integer varId) {
+		final ModelAndView result;
+		final Article article = this.articleService.findOne(varId);
+		Assert.notNull(article);
+		if (article.isFinalMode())
+			result = new ModelAndView("redirect:/newspaper/user/list.do");
+		else
+			result = this.createEditModelAndView(article, varId);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final Article article, final Integer varId, final BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(article, varId);
+		else
+			try {
+				this.articleService.save(article, varId);
+				result = new ModelAndView("redirect:/newspaper/user/list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(article, varId, "article.commit.error");
+				System.out.println(oops.getStackTrace());
+			}
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Article article, final Integer varId, final BindingResult binding) {
+		ModelAndView result;
+
+		try {
+			this.articleService.delete(article, varId);
+			result = new ModelAndView("redirect:/newspaper/user/list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(article, varId, "article.commit.error");
+		}
 		return result;
 	}
 
@@ -77,26 +125,22 @@ public class ArticleUserController extends AbstractController {
 
 	//Ancillary methods
 
-	protected ModelAndView createEditModelAndView(final Article article) {
+	protected ModelAndView createEditModelAndView(final Article article, final Integer varId) {
 		ModelAndView result;
 
-		result = this.createEditModelAndView(article, null);
+		result = this.createEditModelAndView(article, varId, null);
 
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final Article article, final String messageCode) {
+	protected ModelAndView createEditModelAndView(final Article article, final Integer varId, final String messageCode) {
 		ModelAndView result;
-		final Collection<Article> articles;
-		articles = ((User) this.actorService.findByPrincipal()).getArticles();
 		result = new ModelAndView("article/edit");
 		result.addObject("article", article);
-		result.addObject("articles", articles);
+		result.addObject("varId", varId);
 		result.addObject("message", messageCode);
 		result.addObject("requestURI", "article/user/edit.do");
 
 		return result;
-
 	}
-
 }

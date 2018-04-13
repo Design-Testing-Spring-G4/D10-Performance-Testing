@@ -86,7 +86,6 @@
 			<%-- Buttons --%>
 			<input type="submit" name="save" value="${msgSave}">
 
-
 			<input type="button" name="cancel" value="${msgCancel}"
 				onclick="javascript: relativeRedir('newspaper/user/list.do');" />
 

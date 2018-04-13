@@ -66,6 +66,13 @@ public class NewspaperService {
 		return saved;
 	}
 
+	//Internal save method to avoid concurrency issues
+	public Newspaper saveInternal(final Newspaper newspaper) {
+		Assert.notNull(newspaper);
+		final Newspaper saved = this.newspaperRepository.save(newspaper);
+		return saved;
+	}
+
 	public void delete(final Newspaper newspaper) {
 		Assert.notNull(newspaper);
 
