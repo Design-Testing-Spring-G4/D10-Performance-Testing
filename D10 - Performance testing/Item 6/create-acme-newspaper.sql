@@ -53,15 +53,6 @@ CREATE TABLE `actor` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `actor`
---
-
-LOCK TABLES `actor` WRITE;
-/*!40000 ALTER TABLE `actor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `actor` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `administrator`
 --
 
@@ -116,15 +107,6 @@ CREATE TABLE `article` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `article`
---
-
-LOCK TABLES `article` WRITE;
-/*!40000 ALTER TABLE `article` DISABLE KEYS */;
-/*!40000 ALTER TABLE `article` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `article_followup`
 --
 
@@ -142,15 +124,6 @@ CREATE TABLE `article_followup` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `article_followup`
---
-
-LOCK TABLES `article_followup` WRITE;
-/*!40000 ALTER TABLE `article_followup` DISABLE KEYS */;
-/*!40000 ALTER TABLE `article_followup` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `article_pictures`
 --
 
@@ -164,15 +137,6 @@ CREATE TABLE `article_pictures` (
   CONSTRAINT `FK_slh5rr6y2n4ml5s20v5nlr52g` FOREIGN KEY (`Article_id`) REFERENCES `article` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `article_pictures`
---
-
-LOCK TABLES `article_pictures` WRITE;
-/*!40000 ALTER TABLE `article_pictures` DISABLE KEYS */;
-/*!40000 ALTER TABLE `article_pictures` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `chirp`
@@ -190,15 +154,6 @@ CREATE TABLE `chirp` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `chirp`
---
-
-LOCK TABLES `chirp` WRITE;
-/*!40000 ALTER TABLE `chirp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `chirp` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `customer`
@@ -223,15 +178,6 @@ CREATE TABLE `customer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customer`
---
-
-LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer_creditcards`
 --
 
@@ -252,15 +198,6 @@ CREATE TABLE `customer_creditcards` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customer_creditcards`
---
-
-LOCK TABLES `customer_creditcards` WRITE;
-/*!40000 ALTER TABLE `customer_creditcards` DISABLE KEYS */;
-/*!40000 ALTER TABLE `customer_creditcards` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `followup`
 --
 
@@ -279,15 +216,6 @@ CREATE TABLE `followup` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `followup`
---
-
-LOCK TABLES `followup` WRITE;
-/*!40000 ALTER TABLE `followup` DISABLE KEYS */;
-/*!40000 ALTER TABLE `followup` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `followup_pictures`
 --
 
@@ -301,15 +229,6 @@ CREATE TABLE `followup_pictures` (
   CONSTRAINT `FK_bikvs1wwtsvtql1bt1ep88bo4` FOREIGN KEY (`Followup_id`) REFERENCES `followup` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `followup_pictures`
---
-
-LOCK TABLES `followup_pictures` WRITE;
-/*!40000 ALTER TABLE `followup_pictures` DISABLE KEYS */;
-/*!40000 ALTER TABLE `followup_pictures` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `hibernate_sequences`
@@ -357,15 +276,6 @@ CREATE TABLE `newspaper` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `newspaper`
---
-
-LOCK TABLES `newspaper` WRITE;
-/*!40000 ALTER TABLE `newspaper` DISABLE KEYS */;
-/*!40000 ALTER TABLE `newspaper` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `newspaper_article`
 --
 
@@ -383,15 +293,6 @@ CREATE TABLE `newspaper_article` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `newspaper_article`
---
-
-LOCK TABLES `newspaper_article` WRITE;
-/*!40000 ALTER TABLE `newspaper_article` DISABLE KEYS */;
-/*!40000 ALTER TABLE `newspaper_article` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `newspaper_customer`
 --
 
@@ -407,15 +308,6 @@ CREATE TABLE `newspaper_customer` (
   CONSTRAINT `FK_enpk5jmy3wblf4421x5gk5lse` FOREIGN KEY (`customers_id`) REFERENCES `customer` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `newspaper_customer`
---
-
-LOCK TABLES `newspaper_customer` WRITE;
-/*!40000 ALTER TABLE `newspaper_customer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `newspaper_customer` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tabooword`
@@ -465,15 +357,6 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_chirp`
 --
 
@@ -491,15 +374,6 @@ CREATE TABLE `user_chirp` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_chirp`
---
-
-LOCK TABLES `user_chirp` WRITE;
-/*!40000 ALTER TABLE `user_chirp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_chirp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_user`
 --
 
@@ -515,15 +389,6 @@ CREATE TABLE `user_user` (
   CONSTRAINT `FK_ipxcfus1p41qgn9xbfhg2aa0r` FOREIGN KEY (`followers_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_user`
---
-
-LOCK TABLES `user_user` WRITE;
-/*!40000 ALTER TABLE `user_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_user` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `useraccount`
