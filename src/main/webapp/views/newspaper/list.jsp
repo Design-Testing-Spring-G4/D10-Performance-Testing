@@ -33,7 +33,7 @@
 <spring:message code="newspaper.create" var="msgCreate" />
 <spring:message code="newspaper.dateInt" var="formatDate" />
 <spring:message code="acrticle.create" var="msgCreateArticle" />
-
+<spring:message code="newspaper.delete" var="msgDeleteNewspaper" />
 
 <security:authorize access="permitAll()">
 
@@ -68,6 +68,17 @@
 			<a href="${displayUrl}"><jstl:out value="${display}" /></a>
 		</display:column>
 
+
+		<security:authorize access="hasRole('ADMIN')">
+			<spring:url var="deleteUrl" value="newspaper/user/delete.do">
+				<spring:param name="varId" value="${row.id}" />
+			</spring:url>
+
+			<display:column>
+				<a href="${deleteUrl}"><jstl:out value="${msgDeleteNewspaper}" /></a>
+			</display:column>
+		</security:authorize>
+		
 		<jstl:if test="${forCreate == true}">
 			<spring:url var="createArticle" value="article/user/create.do">
 				<spring:param name="varId" value="${row.id}" />

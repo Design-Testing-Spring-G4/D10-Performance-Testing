@@ -42,4 +42,7 @@ public interface NewspaperRepository extends JpaRepository<Newspaper, Integer> {
 
 	@Query("select n from Newspaper n where n.publicationDate > ?1")
 	Collection<Newspaper> newspapersForNotToPublish(Date date);
+
+	@Query("select n from Newspaper n join n.articles a where a.id = ?1")
+	Newspaper newspapersWhoContainsArticle(int id);
 }

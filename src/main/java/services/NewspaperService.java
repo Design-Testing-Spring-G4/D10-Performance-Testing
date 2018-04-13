@@ -77,8 +77,8 @@ public class NewspaperService {
 		Assert.notNull(newspaper);
 
 		//Assertion that the user deleting this newspaper has the correct privilege.
-		Assert.isTrue(this.actorService.findByPrincipal().getId() == newspaper.getPublisher().getId());
-
+		Assert.notNull(newspaper);
+		newspaper.getArticles().clear();
 		this.newspaperRepository.delete(newspaper);
 	}
 
@@ -125,6 +125,10 @@ public class NewspaperService {
 
 	public Collection<Newspaper> newspapersForNotToPublish() {
 		return this.newspaperRepository.newspapersForNotToPublish(new Date(System.currentTimeMillis()));
+	}
+
+	public Newspaper newspapersWhoContainsArticle(final int id) {
+		return this.newspaperRepository.newspapersWhoContainsArticle(id);
 	}
 
 }

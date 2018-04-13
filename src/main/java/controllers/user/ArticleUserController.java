@@ -16,9 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.ArticleService;
+import services.NewspaperService;
 import services.UserService;
 import controllers.AbstractController;
 import domain.Article;
+import domain.Newspaper;
 import domain.User;
 
 @Controller
@@ -28,13 +30,16 @@ public class ArticleUserController extends AbstractController {
 	//Services
 
 	@Autowired
-	private ActorService	actorService;
+	private ActorService		actorService;
 
 	@Autowired
-	private UserService		userService;
+	private UserService			userService;
 
 	@Autowired
-	private ArticleService	articleService;
+	private ArticleService		articleService;
+
+	@Autowired
+	private NewspaperService	newspaperService;
 
 
 	//Creation
@@ -66,7 +71,7 @@ public class ArticleUserController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Article article, final Integer varId, final BindingResult binding) {
 		ModelAndView result;
-
+		System.out.println("error:" + binding.getAllErrors());
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(article, varId);
 		else
@@ -74,21 +79,27 @@ public class ArticleUserController extends AbstractController {
 				this.articleService.save(article, varId);
 				result = new ModelAndView("redirect:/newspaper/user/list.do");
 			} catch (final Throwable oops) {
+				System.out.println("oops:" + oops.getMessage());
 				result = this.createEditModelAndView(article, varId, "article.commit.error");
 				System.out.println(oops.getStackTrace());
 			}
 		return result;
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final Article article, final Integer varId, final BindingResult binding) {
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final Integer varId) {
+
 		ModelAndView result;
+		Article article;
+		article = this.articleService.findOne(varId);
+		final Newspaper newspaper = this.newspaperService.newspapersWhoContainsArticle(varId);
 
 		try {
-			this.articleService.delete(article, varId);
-			result = new ModelAndView("redirect:/newspaper/user/list.do");
+			this.articleService.delete(article, newspaper.getId());
+			result = new ModelAndView("redirect:/user/list.do");
 		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(article, varId, "article.commit.error");
+
+			result = new ModelAndView("redirect:/user/list.do");
 		}
 		return result;
 	}

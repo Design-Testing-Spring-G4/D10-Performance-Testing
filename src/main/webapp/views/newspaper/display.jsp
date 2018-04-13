@@ -28,9 +28,12 @@
 <spring:message code="newspaper.publicationDate" var="publicationDate" />
 <spring:message code="newspaper.return" var="msgReturn" />
 
+
 <spring:message code="article.title" var="articleTitle" />
 <spring:message code="article.writer" var="articleWriter" />
 <spring:message code="article.summary" var="articleSummary" />
+<spring:message code="article.edit" var="msgEditArticle" />
+<spring:message code="article.delete" var="msgDelete" />
 
 <%-- For the selected newspaper in the list received as model, display the following information: --%>
 
@@ -76,12 +79,22 @@
 		<display:column property="summary" title="${articleSummary}"
 			sortable="true" />
 
+		<spring:url var="editArticle" value="article/user/edit.do">
+			<spring:param name="varId" value="${row.id}" />
+		</spring:url>
+
+		<display:column>
+			<a href="${editArticle}"><jstl:out value="${msgEditArticle}" /></a>
+		</display:column>
+
 	</display:table>
 
-	<security:authorize access="hasRole('USER')">
-		<spring:url var="createUrl" value="article/user/create.do" />
-		<a href="${createUrl}"><jstl:out value="${msgCreate}" /></a>
-	</security:authorize>
+
+
+		
+		
+
+
 
 	<a href="newspaper/list.do"><jstl:out value="${msgReturn}" /></a>
 
